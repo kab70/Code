@@ -1,14 +1,12 @@
-﻿<%@ Page Title="Manage Account" Language="vb" AutoEventWireup="false" MasterPageFile="~/Site.Master" CodeBehind="Manage.aspx.vb" Inherits="DefTrack.Manage" %>
+﻿<%@ Page Title="Manage Account" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="Manage.aspx.cs" Inherits="DefTrack.Account.Manage" %>
 
-<%@ Import Namespace="DefTrack" %>
-<%@ Import Namespace="Microsoft.AspNet.Identity" %>
 <%@ Register Src="~/Account/OpenAuthProviders.ascx" TagPrefix="uc" TagName="OpenAuthProviders" %>
 
 <asp:Content ContentPlaceHolderID="MainContent" runat="server">
     <h2><%: Title %>.</h2>
 
     <div>
-        <asp:PlaceHolder runat="server" ID="SuccessMessagePlaceHolder" Visible="false" ViewStateMode="Disabled">
+        <asp:PlaceHolder runat="server" ID="successMessage" Visible="false" ViewStateMode="Disabled">
             <p class="text-success"><%: SuccessMessage %></p>
         </asp:PlaceHolder>
     </div>
@@ -25,7 +23,7 @@
                         <asp:HyperLink NavigateUrl="/Account/ManagePassword" Text="[Create]" Visible="false" ID="CreatePassword" runat="server" />
                     </dd>
                     <dt>External Logins:</dt>
-                    <dd><%:LoginsCount %>
+                    <dd><%: LoginsCount %>
                         <asp:HyperLink NavigateUrl="/Account/ManageLogins" Text="[Manage]" runat="server" />
 
                     </dd>
@@ -37,44 +35,46 @@
                     --%>
                     <%--
                     <dt>Phone Number:</dt>
-                     --%>
-                    <% If HasPhoneNumber Then %>
-                    <%--
+                    <% if (HasPhoneNumber)
+                       { %>
                     <dd>
                         <asp:HyperLink NavigateUrl="/Account/AddPhoneNumber" runat="server" Text="[Add]" />
                     </dd>
-                    --%>
-                    <% Else %>
-                    <%--
+                    <% }
+                       else
+                       { %>
                     <dd>
-                    
                         <asp:Label Text="" ID="PhoneNumber" runat="server" />
                         <asp:HyperLink NavigateUrl="/Account/AddPhoneNumber" runat="server" Text="[Change]" /> &nbsp;|&nbsp;
                         <asp:LinkButton Text="[Remove]" OnClick="RemovePhone_Click" runat="server" />
                     </dd>
+                    <% } %>
                     --%>
-                    <% End If %>
+
                     <dt>Two-Factor Authentication:</dt>
                     <dd>
                         <p>
                             There are no two-factor authentication providers configured. See <a href="http://go.microsoft.com/fwlink/?LinkId=403804">this article</a>
                             for details on setting up this ASP.NET application to support two-factor authentication.
-                        </p>                        
-                        <% If TwoFactorEnabled Then %>
+                        </p>
+                        <% if (TwoFactorEnabled)
+                          { %> 
                         <%--
                         Enabled
                         <asp:LinkButton Text="[Disable]" runat="server" CommandArgument="false" OnClick="TwoFactorDisable_Click" />
                         --%>
-                        <% Else %>
-                       	<%--
-                       	Disabled
+                        <% }
+                          else
+                          { %> 
+                        <%--
+                        Disabled
                         <asp:LinkButton Text="[Enable]" CommandArgument="true" OnClick="TwoFactorEnable_Click" runat="server" />
                         --%>
-                        <% End If %>
+                        <% } %>
                     </dd>
                 </dl>
             </div>
         </div>
     </div>
-</asp:Content>
 
+</asp:Content>

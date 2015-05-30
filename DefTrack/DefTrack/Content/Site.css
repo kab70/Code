@@ -44,16 +44,54 @@ input[type="select"] {
       line-height: 1;
       color: inherit;
     }
-    .formbody {
+    .formbody, .successful  {
         padding: 20px;
         font-size: 21px;
         font-weight: 200;
         line-height: 2.1428571435;
-        color: inherent;
         background-color: #eeeeee;
         border-radius: 12px;
     }
     .body-content {
         padding: 0;
+    }
+    .label_format {
+        display: block;
+        margin: 0px;
+        padding: 0px;
+        text-align: left;
+        font-size: 16px;
+        line-height: 16px;
+        min-width: 200px;
+        color: #000000;
+    }
+    .field_format{
+        font-size: 16px;
+        line-height: 16px;
+        min-width: 300px;
+        color: #808080;        
+    }
+    .field_format_long {
+        font-size: 16px;
+        line-height: 16px;
+        min-width: 500px;
+        color: #808080;
+    }
+    .float_right {
+        float: right;
+        display: block;
+        width: 300px;
+    }
+    .float_left {
+        float: left;
+    }
+    .float_clear {
+        clear: both;
+    }
+  .btn-default {
+      border-radius: 12px;
+      padding-left: 20px;
+      padding-right: 20px;
+      margin-top: 1em;
     }
 }
